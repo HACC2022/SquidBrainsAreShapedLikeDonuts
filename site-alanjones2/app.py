@@ -6,6 +6,9 @@ import json
 import plotly
 import plotly.express as px
 
+# from brains.data import url
+# from brains.viz import plotly_plots as pp
+
 app = Flask(__name__)
 
 
@@ -21,6 +24,10 @@ def index():
 
 def gm(country='United Kingdom'):
     df = pd.DataFrame(px.data.gapminder())
+    path = "sample_data/example.csv"
+    # df = url.path_to_dataframe(path)
+
+    # fig = pp.histogram(df['Age'])
 
     fig = px.line(df[df['country'] == country], x="year", y="gdpPercap")
 
